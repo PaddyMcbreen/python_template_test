@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: latest
+  pre_build:
+    commands:
+      - chmod +x ./src/python_tests.py
+  build:
+    commands:
+      - echo "Build started on $(date)"
+
+      - echo Running Unit Tests ...
+      - python ./src/python_tests.py
+  post_build:
+    commands:
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - '**/*'
+    
